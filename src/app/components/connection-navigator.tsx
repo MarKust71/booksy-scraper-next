@@ -5,11 +5,13 @@ import { useEffect } from 'react'
 
 import { dbGetConnectionByIndex } from '@/app/actions/db-get-connection-by-index'
 import { useConnectionNavigatorStore } from '@/app/store/connection-navigator-store'
+import { useHtmlParserStore } from '@/app/store/html-parser-store'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 
 export function ConnectionNavigator() {
   const { index, connection, setIndex, setConnection } = useConnectionNavigatorStore()
+  const { result } = useHtmlParserStore()
 
   const loadConnection = async (idx: number) => {
     const data = await dbGetConnectionByIndex(idx)
@@ -18,7 +20,7 @@ export function ConnectionNavigator() {
 
   useEffect(() => {
     loadConnection(index)
-  }, [index])
+  }, [index, result])
 
   const handlePrev = () => {
     if (index > 0) setIndex(index - 1)
@@ -63,10 +65,16 @@ export function ConnectionNavigator() {
         )}
 
         <div className="flex justify-between">
-          <Button variant="outline" onClick={handlePrev} disabled={index === 0}>
+          <Button
+            variant="outline"
+            onClick={handlePrev}
+            disabled={index === 0}
+            className="cursor-pointer"
+          >
             Poprzedni
           </Button>
-          <Button variant="outline" onClick={handleNext}>
+
+          <Button variant="outline" onClick={handleNext} className="cursor-pointer">
             Następny
           </Button>
         </div>
