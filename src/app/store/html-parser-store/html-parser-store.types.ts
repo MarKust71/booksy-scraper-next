@@ -8,5 +8,5 @@ export interface HtmlParserState {
   html: string
   result: HtmlParseResult | null
   setHtml: (value: string) => void
-  setResult: (value: HtmlParseResult) => void
+  setResult: (value: HtmlParseResult | null) => void
 }
