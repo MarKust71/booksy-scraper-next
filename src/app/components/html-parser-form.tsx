@@ -9,7 +9,7 @@ interface ParseResult {
   email: string | null;
 }
 
-export default function HtmlForm() {
+export default function HtmlParserForm() {
   const [html, setHtml] = useState<string>('');
   const [result, setResult] = useState<ParseResult | null>(null);
 
