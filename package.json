@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "prisma": "npx prisma db pull && npx prisma generate"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
+    "eslint-plugin-prettier": "^5.5.3",
     "prisma": "^6.12.0",
     "tailwindcss": "^4",
     "typescript": "^5"
