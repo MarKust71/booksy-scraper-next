@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 
 import { dbGetConnections } from '@/app/actions/db-get-connections'
+import { ConnectionNavigator } from '@/app/components/connection-navigator'
 import { useHtmlParserStore } from '@/app/store/html-parser-store'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -32,6 +33,10 @@ export default function HtmlParserForm() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
+      <ConnectionNavigator />
+
+      <div className="mt-6" />
+
       <Card>
         <CardContent className="p-6 space-y-4">
           <Textarea
