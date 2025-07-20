@@ -1,18 +1,11 @@
-// app/components/HtmlForm.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { dbGetConnections } from '@/app/actions/db-get-connections'
-
-interface ParseResult {
-  name: string | null
-  phone: string | null
-  email: string | null
-}
+import { useHtmlParserStore } from '@/app/store/html-parser-store'
 
 export default function HtmlParserForm() {
-  const [html, setHtml] = useState<string>('')
-  const [result, setResult] = useState<ParseResult | null>(null)
+  const { html, result, setHtml, setResult } = useHtmlParserStore()
 
   const handleSubmit = async () => {
     const res = await fetch('/api/parse-html', {
@@ -20,7 +13,7 @@ export default function HtmlParserForm() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ html })
     })
-    const data: ParseResult = await res.json()
+    const data = await res.json()
     setResult(data)
   }
 
@@ -40,7 +33,8 @@ export default function HtmlParserForm() {
         value={html}
         onChange={(e) => setHtml(e.target.value)}
         rows={15}
-        className="w-full border border-gray-300 rounded p-3 text-gray-800 bg-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full border border-gray-300 rounded p-3 text-gray-800 bg-white
+        placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Wklej HTML tutaj..."
       />
       <button
