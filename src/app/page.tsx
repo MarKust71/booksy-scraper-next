@@ -1,5 +1,5 @@
 // app/page.tsx
-import HtmlParserForm from './components/html-parser-form';
+import HtmlParserForm from './components/html-parser-form'
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <h1 className="text-3xl font-bold mb-6 text-center">Parser HTML z Cheerio</h1>
       <HtmlParserForm />
     </main>
-  );
+  )
 }
