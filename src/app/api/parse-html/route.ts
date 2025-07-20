@@ -1,7 +1,8 @@
 // app/api/parse-html/route.ts
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 import * as cheerio from 'cheerio'
+import { NextResponse } from 'next/server'
+
+import type { NextRequest } from 'next/server'
 
 interface ParseRequestBody {
   html: string

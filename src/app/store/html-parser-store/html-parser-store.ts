@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+
 import { HtmlParserState } from '@/app/store/html-parser-store/html-parser-store.types'
 
 export const useHtmlParserStore = create<HtmlParserState>()((set) => ({
