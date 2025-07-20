@@ -1,7 +1,8 @@
 // app/components/HtmlForm.tsx
 'use client';
 
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
+import {dbGetConnections} from "@/app/actions/db-get-connections";
 
 interface ParseResult {
   name: string | null;
@@ -22,6 +23,18 @@ export default function HtmlParserForm() {
     const data: ParseResult = await res.json();
     setResult(data);
   };
+
+  const getConnections = async () => {
+    const connections = await dbGetConnections()
+    console.log({connections})
+  }
+
+  useEffect(()=> {
+    console.log('useEffect')
+    getConnections()
+  }, [])
+
+  console.log("result")
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white shadow rounded">

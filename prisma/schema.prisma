@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model connections {
+  id                       Int       @id @default(autoincrement())
+  booksy_business_name     String?
+  booksy_url               String?   @unique
+  is_promoted              Boolean?
+  location_raw             String?
+  location_postal_code     String?
+  location_city            String?
+  location_district        String?
+  location_street          String?
+  location_building        String?
+  location_local           String?
+  registered_business_name String?
+  phone                    String?
+  email                    String?
+  created_on               DateTime? @default(now()) @db.Timestamp(6)
+  updated_on               DateTime? @default(now()) @db.Timestamp(6)
+}
