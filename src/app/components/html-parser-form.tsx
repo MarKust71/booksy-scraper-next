@@ -1,8 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
-
-import { dbGetConnections } from '@/app/actions/db-get-connections'
 import { ConnectionNavigator } from '@/app/components/connection-navigator'
 import { useHtmlParserStore } from '@/app/store/html-parser-store'
 import { Button } from '@/components/ui/button'
@@ -21,15 +18,6 @@ export default function HtmlParserForm() {
     const data = await res.json()
     setResult(data)
   }
-
-  const getConnections = async () => {
-    const connections = await dbGetConnections()
-    console.log({ connections })
-  }
-
-  useEffect(() => {
-    getConnections()
-  }, [])
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
