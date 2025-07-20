@@ -46,6 +46,21 @@ export default function HtmlParserForm() {
     }
   }
 
+  const handlePasteFromClipboard = async () => {
+    try {
+      const text = await navigator.clipboard.readText()
+      if (text) {
+        setHtml(text)
+        toast.success('Wklejono zawartość ze schowka.')
+      } else {
+        toast.warning('Schowek jest pusty.')
+      }
+    } catch (err) {
+      toast.error('Nie udało się odczytać ze schowka.')
+      console.error(err)
+    }
+  }
+
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <ConnectionNavigator />
@@ -62,9 +77,15 @@ export default function HtmlParserForm() {
             className="text-xs max-h-1/4"
           />
 
-          <Button onClick={handleSubmit} className="cursor-pointer" disabled={!html}>
-            Parsuj HTML
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={handlePasteFromClipboard} className="cursor-pointer">
+              Wklej
+            </Button>
+
+            <Button onClick={handleSubmit} disabled={!html} className="cursor-pointer">
+              Parsuj HTML
+            </Button>
+          </div>
 
           {result && (
             <div className="space-y-2 text-gray-800 bg-gray-100 p-4 rounded">

@@ -28,16 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
-    </html>
-  )
-}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      {children}
-      <Toaster />
-    </>
+        <Toaster />
+      </body>
+    </html>
   )
 }
