@@ -36,7 +36,9 @@ export function ConnectionNavigator() {
             <p>
               <strong>{connection.booksy_business_name}</strong>
             </p>
+
             <p>{connection.location_raw}</p>
+
             <p>
               <a
                 href={connection.booksy_url || ''}
@@ -47,6 +49,14 @@ export function ConnectionNavigator() {
                 {connection.booksy_url}
               </a>
             </p>
+
+            <p className="text-gray-500 text-sm">
+              Nazwa w rejestrze: {connection.registered_business_name}
+            </p>
+
+            <p className="text-gray-500 text-sm">Telefon: {connection.phone}</p>
+
+            <p className="text-gray-500 text-sm">Email: {connection.email}</p>
           </div>
         ) : (
           <p className="text-gray-500 italic">Brak danych</p>
