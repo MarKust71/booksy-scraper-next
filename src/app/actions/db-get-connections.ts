@@ -6,10 +6,8 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function dbGetConnections() {
-  const connections = await prisma.connections.findMany({
-    orderBy: { created_on: 'desc' },
+  return prisma.connections.findMany({
+    orderBy: { created_at: 'desc' },
     take: 20
   })
-
-  return connections
 }

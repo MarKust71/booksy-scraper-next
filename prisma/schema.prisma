@@ -22,6 +22,6 @@ model connections {
   registered_business_name String?
   phone                    String?
   email                    String?
-  created_on               DateTime? @default(now()) @db.Timestamp(6)
-  updated_on               DateTime? @default(now()) @db.Timestamp(6)
+  created_at               DateTime? @default(now()) @db.Timestamp(6)
+  updated_at               DateTime? @default(now()) @db.Timestamp(6)
 }

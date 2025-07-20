@@ -34,8 +34,6 @@ export default function HtmlParserForm() {
     getConnections()
   }, [])
 
-  console.log('result')
-
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white shadow rounded">
       <textarea
